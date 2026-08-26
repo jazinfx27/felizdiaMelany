@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MELS — SIDE A</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --black: #050505;
+    --black2: #0d0d0d;
+    --black3: #151515;
+
+    --pink: #ff7fae;
+    --pink-dark: #9e3e63;
+    --pink-soft: #ffc2d7;
+
+    --white: #f5f5f5;
+    --gray: #aaa;
+    --dark-gray: #555;
+
+    --line: rgba(255,127,174,.22);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: "DM Mono", monospace;
+    overflow-x: hidden;
+}
+
+/* =========================
+   GRAIN
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: .06;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5,5,5,.95),
+            rgba(5,5,5,.7),
+            transparent
+        );
+
+    font-size: 8px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+nav a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,127,174,.12),
+            transparent 35%
+        ),
+        #050505;
+
+    overflow: hidden;
+}
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border: 1px solid rgba(255,127,174,.18);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px rgba(255,127,174,.025),
+        0 0 0 90px rgba(255,127,174,.015);
+
+    animation: pulse 8s infinite alternate;
+}
+
+@keyframes pulse {
+
+    from {
+        transform: scale(.96);
+        opacity: .4;
+    }
+
+    to {
+        transform: scale(1.04);
+        opacity: .8;
+    }
+
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.small {
+    font-size: 8px;
+    letter-spacing: .3em;
+    color: var(--gray);
+    text-transform: uppercase;
+}
+
+.hero h1 {
+
+    margin: 25px 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(90px, 17vw, 180px);
+
+    line-height: .7;
+
+    letter-spacing: .05em;
+
+    color: var(--white);
+
+    text-shadow:
+        5px 6px 0 rgba(255,127,174,.18),
+        12px 15px 30px #000;
+}
+
+.subtitle {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-style: italic;
+
+    font-size: 30px;
+
+    color: var(--pink-soft);
+}
+
+.artist-line {
+
+    margin-top: 25px;
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+
+    color: var(--gray);
+}
+
+.birthday {
+
+    margin: 30px auto;
+
+    max-width: 650px;
+
+    padding: 25px;
+
+    border: 1px solid var(--line);
+
+    background: rgba(255,127,174,.025);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-style: italic;
+
+    font-size: 24px;
+
+    line-height: 1.3;
+}
+
+.play-button {
+
+    padding: 15px 28px;
+
+    background: transparent;
+
+    color: var(--white);
+
+    border: 1px solid var(--pink);
+
+    cursor: pointer;
+
+    font-family: "DM Mono";
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+
+    transition: .3s;
+}
+
+.play-button:hover {
+
+    background: var(--pink);
+
+    color: #050505;
+
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.container {
+
+    width: min(1050px, 90%);
+
+    margin: auto;
+}
+
+section {
+
+    padding: 110px 0;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+.section-title {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+
+    margin: 0;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: clamp(50px, 8vw, 85px);
+
+    line-height: .8;
+}
+
+.number {
+
+    margin-left: auto;
+
+    color: var(--pink);
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+}
+
+/* =========================
+   TRACKS
+========================= */
+
+.track {
+
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 20px;
+
+    padding: 35px 10px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    transition: .3s;
+}
+
+.track:hover {
+
+    background: rgba(255,127,174,.025);
+
+    padding-left: 20px;
+}
+
+.track-number {
+
+    color: var(--pink);
+
+    font-size: 9px;
+}
+
+.track h3 {
+
+    margin: 0 0 15px;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 42px;
+}
+
+.track p {
+
+    white-space: pre-line;
+
+    color: #c9c9c9;
+
+    font-size: 12px;
+
+    line-height: 2;
+}
+
+.highlight {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-left: 2px solid var(--pink);
+
+    background: rgba(255,127,174,.04);
+
+    font-family: "Cormorant Garamond";
+
+    font-size: 25px;
+
+    font-style: italic;
+}
+
+/* =========================
+   SPECIAL POEM
+========================= */
+
+.eye-poem {
+
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,127,174,.13),
+            transparent 50%
+        );
+}
+
+.eye-poem::before,
+.eye-poem::after {
+
+    content: "";
+
+    position: absolute;
+
+    border: 1px solid rgba(255,127,174,.15);
+
+    border-radius: 50%;
+}
+
+.eye-poem::before {
+
+    width: 500px;
+    height: 260px;
+
+}
+
+.eye-poem::after {
+
+    width: 260px;
+    height: 500px;
+
+}
+
+.eye-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+.eye-content h2 {
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 65px;
+
+    margin-bottom: 40px;
+}
+
+.eye-content p {
+
+    white-space: pre-line;
+
+    font-family: "Cormorant Garamond";
+
+    font-size: 23px;
+
+    line-height: 1.55;
+}
+
+/* =========================
+   INTERESTS
+========================= */
+
+.interests {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.card {
+
+    min-height: 230px;
+
+    padding: 25px;
+
+    border: 1px solid var(--line);
+
+    background: linear-gradient(
+        145deg,
+        #131313,
+        #090909
+    );
+
+    position: relative;
+
+    transition: .35s;
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: var(--pink);
+}
+
+.card-number {
+
+    color: var(--pink);
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+}
+
+.card h3 {
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 38px;
+
+    margin: 20px 0;
+}
+
+.card p {
+
+    color: var(--gray);
+
+    font-size: 9px;
+
+    line-height: 1.8;
+}
+
+.secret {
+
+    position: absolute;
+
+    bottom: 20px;
+    right: 20px;
+
+    color: var(--dark-gray);
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    transition: .3s;
+}
+
+.secret:hover {
+
+    color: var(--pink);
+}
+
+/* =========================
+   PLAYLIST
+========================= */
+
+.music-layout {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.player {
+
+    padding: 30px;
+
+    border: 1px solid var(--line);
+
+    background: #0d0d0d;
+
+    text-align: center;
+}
+
+.record {
+
+    width: 220px;
+    height: 220px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #050505 0px,
+            #161616 2px,
+            #050505 4px
+        );
+
+    border: 10px solid #0b0b0b;
+
+    box-shadow:
+        0 0 0 1px var(--pink-dark),
+        15px 20px 30px #000;
+
+    position: relative;
+}
+
+.record::after {
+
+    content: "MELS";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    place-items: center;
+
+    background: var(--pink);
+
+    color: #111;
+
+    font-size: 7px;
+
+    letter-spacing: .2em;
+}
+
+.record.playing {
+
+    animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.player-title {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 35px;
+}
+
+.song {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+    font-size: 8px;
+}
+
+.song span:last-child {
+
+    color: var(--pink);
+}
+
+/* =========================
+   ART SECTION
+========================= */
+
+.art {
+
+    min-height: 450px;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,127,174,.08),
+            transparent
+        );
+}
+
+.art-window {
+
+    width: min(700px, 90%);
+
+    border: 1px solid var(--pink-dark);
+
+    background: #101010;
+
+    box-shadow: 15px 15px 0 #000;
+
+}
+
+.window-top {
+
+    padding: 10px;
+
+    border-bottom: 1px solid var(--line);
+
+    text-align: left;
+
+    font-size: 7px;
+
+    color: var(--gray);
+}
+
+.art-content {
+
+    padding: 60px;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,127,174,.15),
+            transparent 55%
+        );
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f3f3,
+            #d9d9d9
+        );
+
+    color: #171717;
+
+    box-shadow:
+        14px 14px 0 #080808,
+        0 30px 60px #000;
+
+    transform: rotate(-.3deg);
+}
+
+.letter h2 {
+
+    margin-top: 0;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 60px;
+}
+
+.letter p {
+
+    font-family: "Cormorant Garamond";
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+.letter .big {
+
+    font-size: 29px;
+
+    font-style: italic;
+}
+
+.signature {
+
+    margin-top: 40px;
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: 32px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+
+    text-align: center;
+
+    padding: 160px 20px;
+}
+
+.final h2 {
+
+    font-family: "Cormorant Garamond";
+
+    font-style: italic;
+
+    font-size: clamp(60px, 10vw, 110px);
+
+    margin: 0;
+}
+
+.final p {
+
+    margin-top: 30px;
+
+    color: var(--gray);
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+}
+
+/* =========================
+   MODAL SECRET
+========================= */
+
+#secretBox {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.85);
+
+    display: none;
+
+    place-items: center;
+
+    z-index: 500;
+
+    padding: 25px;
+}
+
+.secret-message {
+
+    max-width: 500px;
+
+    padding: 40px;
+
+    border: 1px solid var(--pink);
+
+    background: #0b0b0b;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px #000;
+}
+
+.secret-message p {
+
+    font-family: "Cormorant Garamond";
+
+    font-size: 28px;
+
+    font-style: italic;
+
+    line-height: 1.4;
+}
+
+.close {
+
+    margin-top: 20px;
+
+    border: 1px solid var(--pink);
+
+    color: var(--white);
+
+    background: transparent;
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 750px) {
+
+    nav {
+        gap: 12px;
+        font-size: 6px;
+    }
+
+    .hero h1 {
+        font-size: 95px;
+    }
+
+    .interests,
+    .music-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .track {
+        grid-template-columns: 35px 1fr;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter h2 {
+        font-size: 48px;
+    }
+
+    .eye-content h2 {
+        font-size: 50px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<a href="#story">story</a>
+<a href="#poems">poems</a>
+<a href="#music">music</a>
+<a href="#mels">mels</a>
+<a href="#final">final</a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="small">
+birthday edition · 2026
+</div>
+
+<h1>MELS</h1>
+
+<div class="subtitle">
+Side A — After Midnight
+</div>
+
+<div class="artist-line">
+ARCTIC MONKEYS × THE NEIGHBOURHOOD × BTS
+</div>
+
+<div class="birthday">
+
+Happy Birthday, Mels.
+
+<br><br>
+
+No podía enviarte un regalo
+que pudieras abrir con las manos.
+
+Así que hice algo
+que pudiera llegar hasta ti de otra manera.
+
+</div>
+
+<button class="play-button"
+onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">
+
+▶ PRESS PLAY
+
+</button>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section id="story">
+
+<div class="section-title">
+
+<h2>The Story</h2>
+
+<span class="number">
+01 / ARCHIVE
+</span>
+
+</div>
+
+<div class="track">
+
+<div class="track-number">
+01
+</div>
+
+<div>
+
+<h3>Cuando apareciste</h3>
+
+<p>
+No esperaba hacerte algo así.
+
+De hecho, cuando acepté volver a hablar contigo,
+tampoco esperaba terminar aquí.
+
+Solo quería saber si tenías algo que decirme.
+
+Y supongo que terminé descubriendo
+que todavía había cosas
+que yo tenía que decir.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+02
+</div>
+
+<div>
+
+<h3>La espera</h3>
+
+<p>
+Me declaro
+concubino de la espera,
+pero víctima de la esperanza.
+
+Porque esperar por ti
+nunca se sintió realmente como esperar.
+
+Se parecía más
+a tener una razón para hacerlo.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+03
+</div>
+
+<div>
+
+<h3>Curiosidad</h3>
+
+<p>
+Cuando te conocí,
+empecé a suponer
+que nunca podría explicarte del todo.
+
+Y quizá eso fue lo primero
+que me gustó de ti.
+
+Te veo sonreír
+y no puedo esquivar
+esa curiosidad
+tan propia de un enamorado.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+04
+</div>
+
+<div>
+
+<h3>Flores</h3>
+
+<p>
+Odio regalar flores.
+
+Quizá porque lo mío contigo
+no quiero que se marchite.
+
+Prefiero darte algo
+que pueda quedarse,
+aunque sea solamente
+en palabras.
+</p>
+
+<div class="highlight">
+Lo mío no se marchita.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+05
+</div>
+
+<div>
+
+<h3>Distancia</h3>
+
+<p>
+Entonces nos alejamos.
+
+Y, de alguna manera,
+volvemos siendo
+un poco más que antes.
+
+Como si la distancia
+tuviera esa extraña costumbre
+de hacerme extrañarte
+justo lo suficiente.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+06
+</div>
+
+<div>
+
+<h3>Peligro</h3>
+
+<p>
+Pienso que eres una bomba
+mientras busco
+el cable incorrecto.
+
+Y quizá debería tener miedo.
+
+Pero dime...
+
+¿Sigue siendo una trampa
+si elijo caer?
+
+¿Sigue siendo una tragedia
+si me hace feliz?
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+07
+</div>
+
+<div>
+
+<h3>Imposible</h3>
+
+<p>
+Leí lo suficiente
+como para saber
+que esto que me pasa
+quizá no sea amor.
+
+No todavía.
+
+Pero se parece demasiado.
+
+Se parece un poco más
+a lo imposible.
+
+Y quizá por eso
+me gusta tanto.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+08
+</div>
+
+<div>
+
+<h3>Canciones</h3>
+
+<p>
+Me di cuenta de que era algo serio
+cuando empecé a querer dedicarte
+canciones cursis
+que ni siquiera me gustan.
+
+No porque de repente
+me gustaran las canciones.
+
+Sino porque ahora
+me recuerdan a ti.
+
+Y, sinceramente,
+nada de ti me da vergüenza.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     EYES POEM
+========================= -->
+
+<section class="eye-poem" id="poems">
+
+<div class="eye-content">
+
+<div class="small">
+TRACK 00 · THE FIRST FALL
+</div>
+
+<h2>Ah, sus ojos</h2>
+
+<p>
+Quedé profundamente sumergido en sus ojos.
+
+Sabía que había algo extraño en ellos,
+pero aun así me dejé caer,
+sin resistencia.
+
+Me dejé querer
+sin haber sido querido,
+y quizá fue justo en ese instante
+cuando quedé enamorado.
+
+Me encantan.
+
+No sé cómo describirlos.
+
+Y es extraño,
+porque ni siquiera recuerdo su color.
+
+Pero recuerdo lo que provocaban.
+
+Cada vez que los miraba
+tenía la sensación
+de que podía caer dentro de ellos,
+perderme ahí
+y olvidarme de encontrar
+el camino de regreso.
+
+Intenté correr,
+pero ya era demasiado tarde.
+
+Mi corazón ya no estaba conmigo.
+
+Estaba contigo.
+
+De vez en cuando intento recuperarlo,
+convencerlo de que vuelva a mí,
+pero cada vez me cuesta más hacerlo.
+
+Porque, si soy sincero,
+cada vez prefiero más quedarme allá.
+
+En el mismo lugar
+donde empezó todo.
+
+En tu mirada.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<section id="music">
+
+<div class="section-title">
+
+<h2>The Soundtrack</h2>
+
+<span class="number">
+02 / MUSIC
+</span>
+
+</div>
+
+<div class="music-layout">
+
+<div class="player">
+
+<div class="record" id="record"></div>
+
+<div class="player-title">
+Mels — Side A
+</div>
+
+<p class="small">
+after midnight / somewhere between here and there
+</p>
+
+<button
+class="play-button"
+onclick="toggleRecord()">
+
+▶ PLAY VINYL
+
+</button>
+
+</div>
+
+
+<div>
+
+<div class="track">
+
+<div class="track-number">
+AM
+</div>
+
+<div>
+
+<h3>Arctic Monkeys</h3>
+
+<p>
+guitarras,
+madrugada,
+ironía
+y esa sensación
+de estar pensando demasiado.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+TN
+</div>
+
+<div>
+
+<h3>The Neighbourhood</h3>
+
+<p>
+noches,
+sombras,
+nostalgia
+y cosas
+que se sienten mejor
+con auriculares.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="track">
+
+<div class="track-number">
+BTS
+</div>
+
+<div>
+
+<h3>BTS</h3>
+
+<p>
+Porque no todo tiene
+que ser triste,
+complicado
+o demasiado profundo.
+
+A veces una canción
+simplemente hace
+que el día sea mejor.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="highlight">
+
+Dos bandas distintas.
+Una más.
+La misma hora de la noche.
+
+Y, por alguna razón,
+todas terminan llevándome a ti.
+
+</div>
+
+
+<div style="margin-top:50px">
+
+<div class="small">
+PLAYLIST · LATE NIGHT
+</div>
+
+<br>
+
+<div class="song">
+<span>01 · 505</span>
+<span>Arctic Monkeys</span>
+</div>
+
+<div class="song">
+<span>02 · Sweater Weather</span>
+<span>The Neighbourhood</span>
+</div>
+
+<div class="song">
+<span>03 · I Wanna Be Yours</span>
+<span>Arctic Monkeys</span>
+</div>
+
+<div class="song">
+<span>04 · Softcore</span>
+<span>The Neighbourhood</span>
+</div>
+
+<div class="song">
+<span>05 · Arabella</span>
+<span>Arctic Monkeys</span>
+</div>
+
+<div class="song">
+<span>06 · Daddy Issues</span>
+<span>The Neighbourhood</span>
+</div>
+
+<div class="song">
+<span>07 · No. 1 Party Anthem</span>
+<span>Arctic Monkeys</span>
+</div>
+
+<div class="song">
+<span>08 · BTS</span>
+<span>BTS</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MELS INTERESTS
+========================= -->
+
+<section id="mels">
+
+<div class="section-title">
+
+<h2>Mels Archive</h2>
+
+<span class="number">
+03 / HER
+</span>
+
+</div>
+
+<div class="interests">
+
+
+<div class="card">
+
+<div class="card-number">
+01 · QUEST
+</div>
+
+<h3>Zelda</h3>
+
+<p>
+QUEST LOG
+
+Find the perfect
+birthday gift.
+
+STATUS:
+
+Somehow ended up
+making a website.
+</p>
+
+<div
+class="secret"
+onclick="showSecret('You found a secret. +1 heart.')">
+
+✦
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">
+02 · LEVEL
+</div>
+
+<h3>Mario</h3>
+
+<p>
+LEVEL 01
+
+Collect:
+
+⭐ one birthday
+🍄 several memories
+🎮 several hours of gaming
+💌 one ridiculous gift
+
++1000 points
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">
+03 · ISLAND
+</div>
+
+<h3>Animal Crossing</h3>
+
+<p>
+WELCOME TO MELS' ISLAND
+
+Population: 1
+
+Current weather:
+probably cozy.
+
+Time:
+2:17 AM
+
+Someone left
+a letter here.
+</p>
+
+<div
+class="secret"
+onclick="showSecret('I hope today is a good day for you.')">
+
+✦
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">
+04 · DIGITAL
+</div>
+
+<h3>Digital Dreams</h3>
+
+<p>
+STYLE DETECTED:
+
+anime-inspired
+digital art
+
+STATUS:
+
+probably staring
+at the details
+for way too long.
+</p>
+
+<div
+class="secret"
+onclick="showSecret('Some things are easier to appreciate than to explain.')">
+
+✦
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">
+05 · SWEET
+</div>
+
+<h3>Sweet Shop</h3>
+
+<p>
+OPEN 24 / 7
+
+because apparently
+birthdays require sugar.
+
+Some things are simply
+better when they're sweet.
+</p>
+
+<div
+class="secret"
+onclick="showSecret('You deserve something sweet today.')">
+
+✦
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">
+06 · SERIES
+</div>
+
+<h3>Melsflix</h3>
+
+<p>
+CONTINUE WATCHING?
+
+"The girl who came back"
+
+Season 2 · Episode 1
+
+"Things I never said"
+
+Season 1 · Episode 7
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     DIGITAL ART
+========================= -->
+
+<section class="art">
+
+<div class="art-window">
+
+<div class="window-top">
+MELS_ART.exe · LAYER 04 · DIGITAL DREAMS
+</div>
+
+<div class="art-content">
+
+LAYER 01 — SKETCH<br>
+LAYER 02 — COLORS<br>
+LAYER 03 — LIGHT<br>
+<span style="color:var(--pink)">
+LAYER 04 — MELS
+</span>
+
+<br><br>
+
+Some people are easier
+to appreciate when you stop
+trying to explain them
+and simply look.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FINAL LETTER
+========================= -->
+
+<section id="final">
+
+<div class="section-title">
+
+<h2>Final Track</h2>
+
+<span class="number">
+04 / FOR MELS
+</span>
+
+</div>
+
+
+<div class="letter">
+
+<h2>Antes de terminar...</h2>
+
+<p>
+Cuando empezamos a hablar nuevamente,
+quizá no fui muy claro.
+
+Pensé que podía simplemente volver
+a hablar contigo y dejar que las cosas
+fueran como antes,
+
+pero me di cuenta de que
+no era tan sencillo.
+</p>
+
+
+<p class="big">
+Me cuesta verte solamente como una amiga.
+</p>
+
+
+<p>
+Y me cuesta muchísimo explicarlo.
+</p>
+
+
+<p>
+Quizá si sintiera menos
+podría hablar más fácilmente de ello.
+
+Pero me cuesta.
+
+Me cuesta mucho más
+de lo que probablemente imaginas.
+</p>
+
+
+<p>
+Hay cosas que siento por ti
+que intento explicar y,
+aun así,
+siempre termino quedándome corto
+con las palabras.
+</p>
+
+
+<p>
+A veces siento que podría escribir
+páginas enteras y aun así
+no encontrar la manera correcta
+de explicarte lo que pasa dentro de mí.
+</p>
+
+
+<p>
+No sé exactamente qué nombre
+tiene todo esto
+y tampoco creo que necesite
+uno ahora.
+</p>
+
+
+<p>
+Solo quería que,
+al menos una vez,
+pudieras conocer un poco
+de todo eso que normalmente
+me cuesta tanto decir.
+</p>
+
+
+<p class="big">
+No es una declaración.
+</p>
+
+
+<p>
+Es simplemente algo
+que quería que supieras.
+</p>
+
+
+<p>
+Y, sobre todo...
+</p>
+
+
+<p class="big">
+Feliz cumpleaños, Mels.
+</p>
+
+
+<p>
+Espero que este nuevo año
+de tu vida te dé muchas razones
+para sonreír,
+para escuchar tus canciones favoritas,
+para conocer lugares nuevos
+y para sentirte feliz.
+</p>
+
+
+<p>
+Me alegra que hayas vuelto
+a formar parte de mis días.
+</p>
+
+
+<div class="signature">
+— para Mels, con cariño ♡
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     END
+========================= -->
+
+<section class="final">
+
+<h2>
+END OF SIDE A
+</h2>
+
+<p>
+NO NECESITA UN NOMBRE ·
+SOLO NECESITABA EXISTIR EN ALGÚN LUGAR
+</p>
+
+<br>
+
+<div class="small">
+SIDE B — NOT YET WRITTEN
+</div>
+
+</section>
+
+
+<!-- SECRET MODAL -->
+
+<div id="secretBox">
+
+<div class="secret-message">
+
+<div class="small">
+SECRET ARCHIVE
+</div>
+
+<p id="secretText"></p>
+
+<button
+class="close"
+onclick="closeSecret()">
+
+CLOSE
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function toggleRecord() {
+
+    const record =
+        document.getElementById("record");
+
+    record.classList.toggle("playing");
+
+}
+
+
+function showSecret(message) {
+
+    document
+        .getElementById("secretText")
+        .innerText = message;
+
+    document
+        .getElementById("secretBox")
+        .style.display = "grid";
+
+}
+
+
+function closeSecret() {
+
+    document
+        .getElementById("secretBox")
+        .style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
