@@ -905,25 +905,51 @@ ARCHIVE NOTE 001 · I don't remember the color. I remember falling.
 
 <div class="player">
 
-<div class="record" id="record">
-</div>
+<div class="record" id="record"></div>
 
-<h3>
-Mels — Side A
+<h3 id="songTitle">
+I Wanna Be Yours
 </h3>
 
-<div class="small">
-after midnight / somewhere between here and there
+<div class="small" id="songArtist">
+Arctic Monkeys · 01 / 09
+</div>
+
+<audio id="musicPlayer"></audio>
+
+<br>
+
+<div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+
+<button
+class="btn"
+onclick="previousSong()"
+>
+⏮ PREV
+</button>
+
+<button
+class="btn"
+onclick="toggleMusic()"
+id="musicButton"
+>
+▶ PLAY
+</button>
+
+<button
+class="btn"
+onclick="nextSong()"
+>
+NEXT ⏭
+</button>
+
 </div>
 
 <br>
 
-<button
-class="btn"
-onclick="document.getElementById('record').classList.toggle('spin')"
->
-▶ SPIN VINYL
-</button>
+<div class="small">
+MELS — SIDE A
+</div>
 
 </div>
 
@@ -1588,6 +1614,191 @@ Me basta con saber que, entre tantas personas, me alegra muchísimo haberte enco
 let secretsFound = 0;
 const totalSecrets = 5;
 
+
+/* =========================
+   MELS — SIDE A MUSIC PLAYER
+========================= */
+
+const songs = [
+
+    {
+        title: "I Wanna Be Yours",
+        artist: "Arctic Monkeys",
+        file: "musica.mp3"
+    },
+
+    {
+        title: "Sweater Weather",
+        artist: "The Neighbourhood",
+        file: "02-sweater-weather.mp3"
+    },
+
+    {
+        title: "505",
+        artist: "Arctic Monkeys",
+        file: "03-505.mp3"
+    },
+
+    {
+        title: "Daddy Issues",
+        artist: "The Neighbourhood",
+        file: "04-daddy-issues.mp3"
+    },
+
+    {
+        title: "Butterfly",
+        artist: "BTS",
+        file: "05-butterfly.mp3"
+    },
+
+    {
+        title: "Do I Wanna Know?",
+        artist: "Arctic Monkeys",
+        file: "06-do-i-wanna-know.mp3"
+    },
+
+    {
+        title: "Softcore",
+        artist: "The Neighbourhood",
+        file: "07-softcore.mp3"
+    },
+
+    {
+        title: "Spring Day",
+        artist: "BTS",
+        file: "08-spring-day.mp3"
+    },
+
+    {
+        title: "Euphoria",
+        artist: "BTS",
+        file: "09-euphoria.mp3"
+    }
+
+];
+
+
+let currentSong = 0;
+
+const musicPlayer = document.getElementById("musicPlayer");
+const record = document.getElementById("record");
+const musicButton = document.getElementById("musicButton");
+const songTitle = document.getElementById("songTitle");
+const songArtist = document.getElementById("songArtist");
+
+
+function loadSong(index) {
+
+    currentSong = index;
+
+    const song = songs[currentSong];
+
+    musicPlayer.src = song.file;
+
+    songTitle.textContent = song.title;
+
+    songArtist.textContent =
+        song.artist +
+        " · " +
+        String(currentSong + 1).padStart(2, "0") +
+        " / 09";
+
+}
+
+
+function toggleMusic() {
+
+    if (musicPlayer.paused) {
+
+        musicPlayer.play()
+            .then(function() {
+
+                record.classList.add("spin");
+
+                musicButton.textContent = "Ⅱ PAUSE";
+
+            })
+            .catch(function(error) {
+
+                console.log("Não foi possível tocar:", error);
+
+            });
+
+    } else {
+
+        musicPlayer.pause();
+
+        record.classList.remove("spin");
+
+        musicButton.textContent = "▶ PLAY";
+
+    }
+
+}
+
+
+function nextSong() {
+
+    currentSong++;
+
+    if (currentSong >= songs.length) {
+        currentSong = 0;
+    }
+
+    loadSong(currentSong);
+
+    musicPlayer.play()
+        .then(function() {
+
+            record.classList.add("spin");
+
+            musicButton.textContent = "Ⅱ PAUSE";
+
+        });
+
+}
+
+
+function previousSong() {
+
+    currentSong--;
+
+    if (currentSong < 0) {
+        currentSong = songs.length - 1;
+    }
+
+    loadSong(currentSong);
+
+    musicPlayer.play()
+        .then(function() {
+
+            record.classList.add("spin");
+
+            musicButton.textContent = "Ⅱ PAUSE";
+
+        });
+
+}
+
+
+/* Passa automaticamente para a próxima */
+
+musicPlayer.addEventListener("ended", function() {
+
+    nextSong();
+
+});
+
+
+/* Primeira música */
+
+loadSong(0);
+
+
+/* =========================
+   SECRETS
+========================= */
+
 function secret(text, star) {
 
     if (!star.classList.contains("found")) {
@@ -1611,7 +1822,10 @@ function secret(text, star) {
             const layer = document.getElementById("layer04");
 
             layer.style.cursor = "pointer";
-            layer.style.textShadow = "0 0 15px #ff7fae";
+
+            layer.style.textShadow =
+                "0 0 15px #ff7fae";
+
             layer.dataset.unlocked = "true";
 
         }, 1200);
@@ -1620,6 +1834,10 @@ function secret(text, star) {
 
 }
 
+
+/* =========================
+   LAYER 04
+========================= */
 
 function openLayer04() {
 
