@@ -1,13 +1,16 @@
-```html
 <!doctype html>
-<html lang="es">
+<html lang="es-VE">
 <head>
 <meta charset="utf-8">
-<title>MELS — SIDE A</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MELS — LADO A</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
-
 :root{
     --black:#050505;
     --black2:#0d0d0d;
@@ -18,33 +21,30 @@
     --line:#ff7fae38;
 }
 
-*{
-    box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
-html{
-    scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
 body{
     margin:0;
     background:var(--black);
     color:var(--white);
     font-family:"DM Mono",monospace;
-    min-width:1100px;
+    overflow-x:hidden;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* ========== NAVEGACIÓN ========== */
 
 nav{
     position:fixed;
     z-index:100;
     top:0;
     width:100%;
-    padding:18px;
-    text-align:center;
+    padding:16px 12px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:6px 18px;
     background:linear-gradient(#050505f5,#050505aa,transparent);
     letter-spacing:.2em;
     font-size:9px;
@@ -53,32 +53,28 @@ nav{
 nav a{
     color:var(--gray);
     text-decoration:none;
-    margin:0 20px;
     transition:.3s;
 }
 
-nav a:hover{
-    color:var(--pink);
-}
+nav a:hover, nav a:focus-visible{ color:var(--pink); }
 
-/* =========================
-   HERO
-========================= */
+/* ========== HERO ========== */
 
 .hero{
-    height:100vh;
+    min-height:100vh;
+    min-height:100dvh;
     display:grid;
     place-items:center;
     text-align:center;
-    background:
-        radial-gradient(circle,#ff7fae20,transparent 38%);
+    padding:110px 20px 60px;
+    background:radial-gradient(circle,#ff7fae20,transparent 38%);
 }
 
 .hero h1{
-    font:600 190px/0.7 "Cormorant Garamond";
+    font:600 clamp(64px,20vw,190px)/0.78 "Cormorant Garamond";
     letter-spacing:.06em;
     text-shadow:8px 8px #ff7fae30;
-    margin:28px 0;
+    margin:24px 0;
 }
 
 .small{
@@ -88,175 +84,152 @@ nav a:hover{
     text-transform:uppercase;
 }
 
-.subtitle{
-    font:italic 34px "Cormorant Garamond";
-    color:var(--pink-soft);
-}
+.subtitle{ font:italic clamp(22px,5vw,34px) "Cormorant Garamond"; color:var(--pink-soft); }
 
 .birthday{
-    width:720px;
-    margin:35px auto;
-    padding:25px;
+    width:100%;
+    max-width:720px;
+    margin:32px auto;
+    padding:22px;
     border:1px solid var(--line);
-    font:italic 24px/1.4 "Cormorant Garamond";
+    font:italic clamp(17px,3.8vw,24px)/1.5 "Cormorant Garamond";
 }
 
 .btn{
     background:transparent;
-    color:white;
+    color:var(--white);
     border:1px solid var(--pink);
     padding:14px 25px;
+    font-family:"DM Mono",monospace;
+    font-size:12px;
     letter-spacing:.18em;
     cursor:pointer;
     transition:.3s;
 }
 
-.btn:hover{
-    background:var(--pink);
-    color:#111;
+.btn:hover{ background:var(--pink); color:#111; }
+
+.btn:focus-visible,
+nav a:focus-visible,
+.secret:focus-visible,
+.layer04-trigger.unlocked:focus-visible{
+    outline:2px solid var(--pink);
+    outline-offset:4px;
 }
 
-/* =========================
-   GENERAL
-========================= */
+/* ========== GENERAL ========== */
 
 main{
-    width:1000px;
+    width:100%;
+    max-width:1000px;
     margin:auto;
+    padding:0 24px;
 }
 
 section{
-    padding:120px 0;
+    padding:clamp(60px,12vw,120px) 0;
     border-bottom:1px solid var(--line);
 }
 
 .title{
     display:flex;
-    align-items:end;
-    margin-bottom:45px;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin-bottom:40px;
 }
 
-.title h2{
-    font:italic 90px "Cormorant Garamond";
-    margin:0;
-}
+.title h2{ font:italic clamp(40px,8vw,90px) "Cormorant Garamond"; margin:0; }
 
-.num{
-    margin-left:auto;
-    color:var(--pink);
-    font-size:9px;
-}
+.num{ margin-left:auto; color:var(--pink); font-size:9px; }
 
-/* =========================
-   STORY / POEMS
-========================= */
+/* ========== HISTORIA / POEMAS ========== */
 
 .track{
     display:grid;
-    grid-template-columns:55px 1fr;
-    padding:34px 10px;
+    grid-template-columns:40px 1fr;
+    gap:6px 18px;
+    padding:30px 8px;
     border-top:1px solid #ffffff12;
     transition:.3s;
 }
 
-.track:hover{
-    background:#ff7fae08;
-}
+.track:hover{ background:#ff7fae08; }
 
-.n{
-    color:var(--pink);
-    font-size:9px;
-}
+.n{ color:var(--pink); font-size:9px; }
 
-.track h3{
-    font:italic 45px "Cormorant Garamond";
-    margin:0 0 15px;
-}
+.track h3{ font:italic clamp(28px,6vw,45px) "Cormorant Garamond"; margin:0 0 14px; }
 
 .track p{
     white-space:pre-line;
     color:#ccc;
-    font:17px/1.75 "Cormorant Garamond";
+    font:16px/1.75 "Cormorant Garamond";
+    font-size:clamp(15px,3vw,17px);
 }
 
 .quote{
     border-left:2px solid var(--pink);
     padding:12px 18px;
     color:var(--pink-soft);
-    font:italic 27px "Cormorant Garamond";
+    font:italic clamp(19px,4vw,27px) "Cormorant Garamond";
 }
 
-/* =========================
-   EYES POEM
-========================= */
-
 .poem{
-    min-height:700px;
+    min-height:min(700px,90vh);
     display:grid;
     place-items:center;
     text-align:center;
-    background:
-        radial-gradient(ellipse,#ff7fae18,transparent 52%);
+    background:radial-gradient(ellipse,#ff7fae18,transparent 52%);
 }
 
-.poem article{
-    width:730px;
-}
+.poem article{ width:100%; max-width:730px; }
 
-.poem h2{
-    font:italic 75px "Cormorant Garamond";
-}
+.poem h2{ font:italic clamp(38px,9vw,75px) "Cormorant Garamond"; }
 
 .poem p{
     white-space:pre-line;
-    font:23px/1.55 "Cormorant Garamond";
+    font-size:clamp(17px,3.6vw,23px);
+    line-height:1.6;
 }
 
-/* =========================
-   MUSIC
-========================= */
+/* ========== MÚSICA ========== */
 
 .music{
     display:grid;
     grid-template-columns:420px 1fr;
-    gap:70px;
+    gap:60px;
     align-items:center;
 }
 
 .player{
     text-align:center;
     border:1px solid var(--line);
-    padding:35px;
+    padding:clamp(20px,5vw,35px);
 }
 
 .record{
     width:280px;
     height:280px;
+    max-width:70vw;
+    max-height:70vw;
     border-radius:50%;
     margin:auto;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #050505 0 2px,
-            #171717 3px 4px
-        );
-
-    border:12px solid #111;
-
-    box-shadow:
-        0 0 0 1px #9e3e63,
-        18px 20px 35px #000;
-
     position:relative;
+    background:repeating-radial-gradient(circle,#050505 0 2px,#171717 3px 4px);
+    border:12px solid #111;
+    box-shadow:0 0 0 1px #9e3e63, 18px 20px 35px #000;
 }
 
-.record:after{
+.record::after{
     content:"MELS";
     position:absolute;
-    inset:105px;
-    width:70px;
-    height:70px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:25%;
+    height:25%;
+    min-width:56px;
+    min-height:56px;
     border-radius:50%;
     display:grid;
     place-items:center;
@@ -265,23 +238,21 @@ section{
     font-size:8px;
 }
 
-.spin{
-    animation:spin 5s linear infinite;
+.spin{ animation:spin 5s linear infinite; }
+
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+.player h3{ font:italic clamp(26px,5vw,40px) "Cormorant Garamond"; margin:18px 0 6px; }
+
+.transport{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin:16px 0;
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.player h3{
-    font:italic 40px "Cormorant Garamond";
-}
-
-/* =========================
-   MELS ARCHIVE
-========================= */
+/* ========== ARCHIVO DE MELS ========== */
 
 .cards{
     display:grid;
@@ -290,24 +261,17 @@ section{
 }
 
 .card{
-    min-height:260px;
+    min-height:250px;
     border:1px solid var(--line);
-    padding:25px;
-    background:
-        linear-gradient(145deg,#151515,#090909);
+    padding:24px;
+    background:linear-gradient(145deg,#151515,#090909);
     position:relative;
     transition:.3s;
 }
 
-.card:hover{
-    border-color:var(--pink);
-    transform:translateY(-4px);
-}
+.card:hover{ border-color:var(--pink); transform:translateY(-4px); }
 
-.card h3{
-    font:italic 42px "Cormorant Garamond";
-    margin:20px 0;
-}
+.card h3{ font:italic clamp(26px,5.5vw,42px) "Cormorant Garamond"; margin:18px 0; }
 
 .card p{
     white-space:pre-line;
@@ -318,56 +282,62 @@ section{
 
 .secret{
     position:absolute;
-    right:20px;
-    bottom:20px;
+    right:18px;
+    bottom:16px;
+    background:none;
+    border:none;
+    padding:4px;
+    margin:0;
+    font-family:inherit;
+    font-size:16px;
+    line-height:1;
     color:#555;
     cursor:pointer;
     transition:.3s;
 }
 
-.secret:hover{
-    color:var(--pink);
-}
+.secret:hover{ color:var(--pink); }
 
-.secret.found{
-    color:var(--pink);
-    text-shadow:0 0 10px #ff7fae;
-}
+.secret.found{ color:var(--pink); text-shadow:0 0 10px #ff7fae; }
 
-/* =========================
-   DIGITAL ART
-========================= */
+/* ========== ARTE DIGITAL ========== */
 
 .art{
-    height:800px;
+    padding:clamp(60px,14vw,140px) 0;
     display:grid;
     place-items:center;
 }
 
-.window{
-    width:950px;
-    border:1px solid #9e3e63;
-    box-shadow:18px 18px #000;
-}
+.window{ width:100%; max-width:950px; border:1px solid #9e3e63; box-shadow:18px 18px #000; }
 
-.bar{
-    padding:10px;
-    border-bottom:1px solid var(--line);
-    font-size:8px;
-    color:var(--gray);
-}
+.bar{ padding:10px 14px; border-bottom:1px solid var(--line); font-size:8px; color:var(--gray); }
 
 .canvas{
-    padding:100px;
+    padding:clamp(32px,8vw,100px);
     text-align:center;
-    background:
-        radial-gradient(circle,#ff7fae25,transparent 55%);
-    font:italic 40px/1.4 "Cormorant Garamond";
+    background:radial-gradient(circle,#ff7fae25,transparent 55%);
+    font:italic clamp(20px,5vw,40px)/1.5 "Cormorant Garamond";
 }
 
-/* =========================
-   LAYER 04 SECRET SCREEN
-========================= */
+.layer04-trigger{
+    display:inline;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    font:inherit;
+    color:var(--gray);
+    cursor:default;
+    transition:.3s;
+}
+
+.layer04-trigger.unlocked{
+    color:var(--pink);
+    cursor:pointer;
+    text-shadow:0 0 15px #ff7fae;
+}
+
+/* ========== PANTALLA SECRETA — CAPA 04 ========== */
 
 #layer04Screen{
     display:none;
@@ -378,105 +348,62 @@ section{
     backdrop-filter:blur(10px);
     place-items:center;
     overflow-y:auto;
-    padding:40px;
+    padding:24px;
 }
 
 .layer04-box{
-    width:900px;
-    max-width:90%;
+    width:100%;
+    max-width:900px;
     max-height:90vh;
     overflow-y:auto;
-    padding:55px 70px;
+    padding:clamp(28px,6vw,55px) clamp(22px,6vw,70px);
     text-align:center;
     border:1px solid var(--pink);
-    background:
-        radial-gradient(
-            circle,
-            #ff7fae20,
-            #0b0b0b 68%
-        );
-
-    box-shadow:
-        0 0 70px #ff7fae25,
-        20px 20px 0 #000;
-
+    background:radial-gradient(circle,#ff7fae20,#0b0b0b 68%);
+    box-shadow:0 0 70px #ff7fae25, 20px 20px 0 #000;
     animation:layer04Appear .8s ease;
 }
 
-.layer04-box h2{
-    font:italic 55px "Cormorant Garamond";
-    color:var(--pink-soft);
-}
+.layer04-box h2{ font:italic clamp(30px,7vw,55px) "Cormorant Garamond"; color:var(--pink-soft); }
 
 .layer04-box p{
     white-space:pre-line;
-    font:25px/1.65 "Cormorant Garamond";
+    font-size:clamp(17px,3.6vw,25px);
+    line-height:1.7;
     color:#eee;
-    margin:35px auto;
+    margin:30px auto;
 }
 
 @keyframes layer04Appear{
-
-    from{
-        opacity:0;
-        transform:scale(.88);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-
+    from{ opacity:0; transform:scale(.9); }
+    to{ opacity:1; transform:scale(1); }
 }
 
-/* =========================
-   FINAL LETTER
-========================= */
+/* ========== CARTA FINAL ========== */
 
 .letter{
     background:#eee;
     color:#151515;
-    padding:65px 75px;
+    padding:clamp(30px,7vw,65px) clamp(22px,7vw,75px);
     box-shadow:18px 18px #000;
     transform:rotate(-.2deg);
 }
 
-.letter h2{
-    font:italic 68px "Cormorant Garamond";
-    margin-top:0;
-}
+.letter h2{ font:italic clamp(34px,8vw,68px) "Cormorant Garamond"; margin-top:0; }
 
-.letter p{
-    font:20px/1.7 "Cormorant Garamond";
-}
+.letter p{ font-size:clamp(16px,3.4vw,20px); line-height:1.7; }
 
-.letter .big{
-    font-size:30px;
-    font-style:italic;
-}
+.letter .big{ font-size:clamp(21px,4vw,30px); font-style:italic; }
 
-.sig{
-    font:italic 35px "Cormorant Garamond";
-    margin-top:40px;
-}
+.sig{ font:italic clamp(24px,5vw,35px) "Cormorant Garamond"; margin-top:36px; }
 
-/* =========================
-   END
-========================= */
+/* ========== FIN ========== */
 
-.end{
-    text-align:center;
-    padding:180px 0;
-}
+.end{ text-align:center; padding:clamp(90px,20vw,180px) 20px; }
 
-.end h2{
-    font:italic 115px "Cormorant Garamond";
-    margin:0;
-}
+.end h2{ font:italic clamp(48px,13vw,115px) "Cormorant Garamond"; margin:0; }
 
-/* =========================
-   SECRET MODAL
-========================= */
+/* ========== MODAL DE SECRETO ========== */
 
 #modal{
     display:none;
@@ -485,108 +412,99 @@ section{
     inset:0;
     background:#000d;
     place-items:center;
+    padding:20px;
 }
 
 .modal{
-    width:500px;
-    padding:45px;
+    width:100%;
+    max-width:500px;
+    padding:clamp(28px,6vw,45px);
     background:#0b0b0b;
     border:1px solid var(--pink);
     text-align:center;
 }
 
-.modal p{
-    font:italic 30px "Cormorant Garamond";
+.modal p{ font:italic clamp(20px,5vw,30px) "Cormorant Garamond"; }
+
+/* ========== RESPONSIVO ========== */
+
+@media (max-width:860px){
+    .music{ grid-template-columns:1fr; gap:36px; }
 }
 
+@media (max-width:900px){
+    .cards{ grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width:560px){
+    .cards{ grid-template-columns:1fr; }
+    .track{ grid-template-columns:28px 1fr; }
+}
+
+@media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
 <nav>
-    <a href="#story">STORY</a>
-    <a href="#poems">POEMS</a>
-    <a href="#music">MUSIC</a>
+    <a href="#story">HISTORIA</a>
+    <a href="#poems">POEMAS</a>
+    <a href="#music">MÚSICA</a>
     <a href="#mels">MELS</a>
     <a href="#final">FINAL</a>
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- ========== HERO ========== -->
 
 <header class="hero">
-
 <div>
 
-<div class="small">
-birthday archive · 25.08.2003 · age 23
-</div>
+<div class="small">archivo de cumpleaños · 25.08.2003 · 23 años</div>
 
 <h1>MELS</h1>
 
-<div class="subtitle">
-Side A — After Midnight
-</div>
+<div class="subtitle">Lado A — Después de Medianoche</div>
 
-<div class="small" style="margin-top:22px">
-ARCTIC MONKEYS × THE NEIGHBOURHOOD × BTS
-</div>
+<div class="small" style="margin-top:20px">ARCTIC MONKEYS × THE NEIGHBOURHOOD × BTS</div>
 
 <div class="birthday">
-
 Feliz cumpleaños, Mels.
-
 <br><br>
-
 No podía enviarte un regalo que pudieras abrir con las manos.
-
 <br>
-
 Así que hice algo que pudiera llegar hasta ti de otra manera.
-
 </div>
 
-<button class="btn" onclick="location.href='#story'">
-▶ ENTER ARCHIVE
-</button>
+<button class="btn" onclick="location.href='#story'">▶ ENTRAR AL ARCHIVO</button>
 
 </div>
-
 </header>
-
 
 <main>
 
-
-<!-- =========================
-     STORY
-========================= -->
+<!-- ========== HISTORIA ========== -->
 
 <section id="story">
 
 <div class="title">
-<h2>The Story</h2>
-<span class="num">01 / ARCHIVE</span>
+<h2>La Historia</h2>
+<span class="num">01 / ARCHIVO</span>
 </div>
 
-
 <div class="track">
-
 <div class="n">01</div>
-
 <div>
-
 <h3>La espera</h3>
-
-<p>
-Me declaro
+<p>Me declaro
 concubino de la espera,
 pero víctima de la esperanza.
 
@@ -594,24 +512,15 @@ Porque esperar por ti
 nunca se sintió realmente como esperar.
 
 Se parecía más
-a tener una razón para hacerlo.
-</p>
-
+a tener una razón para hacerlo.</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">02</div>
-
 <div>
-
 <h3>Curiosidad</h3>
-
-<p>
-Cuando te conocí,
+<p>Cuando te conocí,
 empecé a suponer
 que nunca podría explicarte del todo.
 
@@ -621,24 +530,15 @@ que me gustó de ti.
 Te veo sonreír
 y no puedo esquivar
 esa curiosidad
-tan propia de un enamorado.
-</p>
-
+tan propia de un enamorado.</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">03</div>
-
 <div>
-
 <h3>Flores</h3>
-
-<p>
-Odio regalar flores.
+<p>Odio regalar flores.
 
 Quizá porque lo mío contigo
 no quiero que se marchite.
@@ -646,28 +546,16 @@ no quiero que se marchite.
 Prefiero darte algo
 que pueda quedarse,
 aunque sea solamente
-en palabras.
-</p>
-
-<div class="quote">
-Lo mío no se marchita.
+en palabras.</p>
+<div class="quote">Lo mío no se marchita.</div>
 </div>
-
 </div>
-
-</div>
-
 
 <div class="track">
-
 <div class="n">04</div>
-
 <div>
-
 <h3>Distancia</h3>
-
-<p>
-Entonces nos alejamos.
+<p>Entonces nos alejamos.
 
 Y, de alguna manera,
 volvemos siendo
@@ -676,24 +564,15 @@ un poco más que antes.
 Como si la distancia
 tuviera esa extraña costumbre
 de hacerme extrañarte
-justo lo suficiente.
-</p>
-
+justo lo suficiente.</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">05</div>
-
 <div>
-
 <h3>Peligro</h3>
-
-<p>
-Pienso que eres una bomba
+<p>Pienso que eres una bomba
 mientras busco
 el cable incorrecto.
 
@@ -703,24 +582,15 @@ Y quizá debería tener miedo.
 si elijo caer?
 
 ¿Sigue siendo una tragedia
-si me hace feliz?
-</p>
-
+si me hace feliz?</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">06</div>
-
 <div>
-
 <h3>Imposible</h3>
-
-<p>
-Leí lo suficiente
+<p>Leí lo suficiente
 como para saber
 que esto que me pasa
 quizá no sea amor.
@@ -733,24 +603,15 @@ Se parece un poco más
 a lo imposible.
 
 Y quizá por eso
-me gusta tanto.
-</p>
-
+me gusta tanto.</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">07</div>
-
 <div>
-
 <h3>Canciones</h3>
-
-<p>
-Me di cuenta de que era algo serio
+<p>Me di cuenta de que era algo serio
 cuando empecé a querer dedicarte
 canciones cursis
 que ni siquiera me gustan.
@@ -762,24 +623,15 @@ Sino porque ahora
 me recuerdan a ti.
 
 Y, sinceramente,
-nada de ti me da vergüenza.
-</p>
-
+nada de ti me da vergüenza.</p>
 </div>
-
 </div>
-
 
 <div class="track">
-
 <div class="n">08</div>
-
 <div>
-
 <h3>A su tiempo</h3>
-
-<p>
-No quiero un amor
+<p>No quiero un amor
 que nazca de la prisa,
 ni de la necesidad
 de no estar solo.
@@ -809,34 +661,22 @@ no se apura.
 
 Llega cuando tiene que llegar.
 
-A su tiempo.
-</p>
-
+A su tiempo.</p>
 </div>
-
 </div>
 
 </section>
 
-
-<!-- =========================
-     EYES POEM
-========================= -->
+<!-- ========== POEMA DE LOS OJOS ========== -->
 
 <section class="poem" id="poems">
-
 <article>
 
-<div class="small">
-TRACK 00 · THE FIRST FALL
-</div>
+<div class="small">PISTA 00 · LA PRIMERA CAÍDA</div>
 
-<h2>
-Ah, sus ojos
-</h2>
+<h2>Ah, sus ojos</h2>
 
-<p>
-Quedé profundamente sumergido en sus ojos.
+<p>Quedé profundamente sumergido en sus ojos.
 
 Sabía que había algo extraño en ellos,
 pero aun así me dejé caer,
@@ -876,631 +716,385 @@ pero cada vez prefiero más quedarme allá.
 En el mismo lugar
 donde empezó todo.
 
-En tu mirada.
-</p>
+En tu mirada.</p>
 
-<div class="quote">
-ARCHIVE NOTE 001 · I don't remember the color. I remember falling.
-</div>
+<div class="quote">NOTA DE ARCHIVO 001 · No recuerdo el color. Recuerdo haber caído.</div>
 
 </article>
-
 </section>
 
-
-<!-- =========================
-     MUSIC
-========================= -->
+<!-- ========== MÚSICA ========== -->
 
 <section id="music">
 
 <div class="title">
-<h2>The Soundtrack</h2>
-<span class="num">02 / MUSIC</span>
+<h2>La Banda Sonora</h2>
+<span class="num">02 / MÚSICA</span>
 </div>
 
-
 <div class="music">
-
-
-<div class="player">
-
-<div class="player">
 
 <div class="player">
 
 <div class="record" id="record"></div>
 
-<h3 id="songTitle">
-I Wanna Be Yours
-</h3>
+<h3 id="songTitle">I Wanna Be Yours</h3>
 
-<div class="small" id="songArtist">
-Arctic Monkeys · 01 / 09
+<div class="small" id="songArtist">Arctic Monkeys · 01 / 09</div>
+
+<audio id="musicPlayer" preload="metadata"></audio>
+
+<div class="transport">
+<button class="btn" onclick="previousSong()">⏮ ANTERIOR</button>
+<button class="btn" onclick="toggleMusic()" id="musicButton">▶ REPRODUCIR</button>
+<button class="btn" onclick="nextSong()">SIGUIENTE ⏭</button>
 </div>
 
-<audio id="musicPlayer" preload="auto"></audio>
-
+<div class="small" id="musicStatus">LISTO</div>
 <br>
-
-<div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
-
-<button class="btn" onclick="previousSong()">
-⏮ PREV
-</button>
-
-<button class="btn" onclick="toggleMusic()" id="musicButton">
-▶ PLAY
-</button>
-
-<button class="btn" onclick="nextSong()">
-NEXT ⏭
-</button>
+<div class="small">MELS — LADO A</div>
 
 </div>
-
-<br>
-
-<div class="small" id="musicStatus">
-READY
-</div>
-
-<br>
-
-<div class="small">
-MELS — SIDE A
-</div>
-
-</div>
-
 
 <div>
-
 
 <div class="track">
-
-<div class="n">
-AM
-</div>
-
+<div class="n">AM</div>
 <div>
-
-<h3>
-Arctic Monkeys
-</h3>
-
-<p>
-Guitarras, madrugada, ironía
-y esa sensación de estar pensando demasiado.
-</p>
-
-<div class="quote">
-Some nights are made for getting lost.
+<h3>Arctic Monkeys</h3>
+<p>Guitarras, madrugada, ironía
+y esa sensación de estar pensando demasiado.</p>
+<div class="quote">Algunas noches están hechas para perderse.</div>
 </div>
-
 </div>
-
-</div>
-
 
 <div class="track">
-
-<div class="n">
-TN
-</div>
-
+<div class="n">TN</div>
 <div>
-
-<h3>
-The Neighbourhood
-</h3>
-
-<p>
-Noches, sombras, nostalgia
-y cosas que se sienten mejor con auriculares.
-</p>
-
-<div class="quote">
-Some memories look better in the dark.
+<h3>The Neighbourhood</h3>
+<p>Noches, sombras, nostalgia
+y cosas que se sienten mejor con auriculares.</p>
+<div class="quote">Algunos recuerdos se ven mejor en la oscuridad.</div>
 </div>
-
 </div>
-
-</div>
-
 
 <div class="track">
-
-<div class="n">
-BTS
-</div>
-
+<div class="n">BTS</div>
 <div>
-
-<h3>
-BTS
-</h3>
-
-<p>
-No todo tiene que ser triste,
+<h3>BTS</h3>
+<p>No todo tiene que ser triste,
 complicado o demasiado profundo.
 
 A veces una canción simplemente
-hace que el día sea mejor.
-</p>
-
-<div class="quote">
-You deserve days that feel like your favorite song.
+hace que el día sea mejor.</p>
+<div class="quote">Mereces días que se sientan como tu canción favorita.</div>
+</div>
 </div>
 
 </div>
 
 </div>
 
-</div>
-
-</div>
-
-<div class="quote">
-I don't remember when you became a song I couldn't stop hearing.
-</div>
+<div class="quote">No recuerdo cuándo te convertiste en una canción que no podía dejar de escuchar.</div>
 
 </section>
 
-
-<!-- =========================
-     MELS ARCHIVE
-========================= -->
+<!-- ========== ARCHIVO DE MELS ========== -->
 
 <section id="mels">
 
 <div class="title">
-<h2>Mels Archive</h2>
-<span class="num">03 / HER</span>
+<h2>Archivo de Mels</h2>
+<span class="num">03 / ELLA</span>
 </div>
-
 
 <div class="cards">
 
+<div class="card">
+<div class="small">01 · MISIÓN</div>
+<h3>Zelda</h3>
+<p>REGISTRO DE MISIÓN
+
+Encontrar el regalo de cumpleaños perfecto.
+
+ESTADO:
+
+De alguna manera terminé haciendo una página web.</p>
+<button type="button" class="secret" onclick="unlockSecret('Encontraste un secreto. +1 corazón.', this)" aria-label="Secreto oculto">✦</button>
+</div>
 
 <div class="card">
-
-<div class="small">
-01 · QUEST
-</div>
-
-<h3>
-Zelda
-</h3>
-
-<p>
-QUEST LOG
-
-Find the perfect birthday gift.
-
-STATUS:
-
-Somehow ended up making a website.
-</p>
-
-<span
-class="secret"
-onclick="secret('You found a secret. +1 heart.', this)"
->
-✦
-</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="small">
-02 · LEVEL
-</div>
-
-<h3>
-Mario
-</h3>
-
-<p>
-PLAYER 01
+<div class="small">02 · NIVEL</div>
+<h3>Mario</h3>
+<p>JUGADORA 01
 
 MELS
 
-LEVEL 23
+NIVEL 23
 
 ♥ ♥ ♥
 
-BIRTHDAY MODE
-ACTIVATED
-</p>
-
+MODO CUMPLEAÑOS
+ACTIVADO</p>
 </div>
-
 
 <div class="card">
-
-<div class="small">
-03 · ISLAND
-</div>
-
-<h3>
-Animal Crossing
-</h3>
-
-<p>
-MELS' ISLAND
+<div class="small">03 · ISLA</div>
+<h3>Animal Crossing</h3>
+<p>LA ISLA DE MELS
 
 ☾ 02:17 AM
 
-Weather: ✦
+Clima: ✦
 
-Visitors: 01
+Visitantes: 01
 
-Letters: 01
+Cartas: 01
 
-Someone left a letter here.
-</p>
-
-<span
-class="secret"
-onclick="secret('I hope today is a good day for you.', this)"
->
-✦
-</span>
-
+Alguien dejó una carta aquí.</p>
+<button type="button" class="secret" onclick="unlockSecret('Espero que hoy sea un buen día para ti.', this)" aria-label="Secreto oculto">✦</button>
 </div>
-
 
 <div class="card">
+<div class="small">04 · DIGITAL</div>
+<h3>Sueños Digitales</h3>
+<p>ESTILO DETECTADO:
 
-<div class="small">
-04 · DIGITAL
-</div>
-
-<h3>
-Digital Dreams
-</h3>
-
-<p>
-STYLE DETECTED:
-
-fantasy
+fantasía
 kawaii
-character art
+arte de personajes
 
-STATUS:
+ESTADO:
 
-probably staring at the details
-for way too long.
-</p>
-
-<span
-class="secret"
-onclick="secret('Some things are easier to appreciate than to explain.', this)"
->
-✦
-</span>
-
+probablemente mirando los detalles
+durante demasiado tiempo.</p>
+<button type="button" class="secret" onclick="unlockSecret('Algunas cosas son más fáciles de apreciar que de explicar.', this)" aria-label="Secreto oculto">✦</button>
 </div>
-
 
 <div class="card">
+<div class="small">05 · DULCE</div>
+<h3>Dulcería</h3>
+<p>ABIERTO 24 / 7
 
-<div class="small">
-05 · SWEET
+Todo es dulce.
+
+No se detectó un favorito.
+
+Conclusión:
+
+A Mels le gustan básicamente todos.
+
+Aprobado para consumo de cumpleaños.</p>
+<button type="button" class="secret" onclick="unlockSecret('Te mereces algo dulce hoy.', this)" aria-label="Secreto oculto">✦</button>
 </div>
-
-<h3>
-Sweet Shop
-</h3>
-
-<p>
-OPEN 24 / 7
-
-Everything is sweet.
-
-No favorite detected.
-
-Conclusion:
-
-Mels likes basically all of them.
-
-Approved for birthday consumption.
-</p>
-
-<span
-class="secret"
-onclick="secret('You deserve something sweet today.', this)"
->
-✦
-</span>
-
-</div>
-
 
 <div class="card">
-
-<div class="small">
-06 · ARCHIVE
-</div>
-
-<h3>
-25.08.03
-</h3>
-
-<p>
-SUBJECT
+<div class="small">06 · ARCHIVO</div>
+<h3>25.08.03</h3>
+<p>SUJETO
 
 MELS
 
-BIRTHDAY
+CUMPLEAÑOS
 
 25.08.2003
 
-AGE
+EDAD
 
 23
 
-STATUS
+ESTADO
 
-CELEBRATING
-</p>
-
-<span
-class="secret"
-onclick="secret('23 years of Mels. The archive is still growing.', this)"
->
-✦
-</span>
-
+CELEBRANDO</p>
+<button type="button" class="secret" onclick="unlockSecret('23 años de Mels. El archivo sigue creciendo.', this)" aria-label="Secreto oculto">✦</button>
 </div>
 
-
 </div>
-
 </section>
 
-
-<!-- =========================
-     DIGITAL ART
-========================= -->
+<!-- ========== ARTE DIGITAL ========== -->
 
 <section class="art">
-
 <div class="window">
 
-<div class="bar">
-MELS_ART.exe · LAYER 04 · DIGITAL DREAMS
-</div>
+<div class="bar">MELS_ART.exe · CAPA 04 · SUEÑOS DIGITALES</div>
 
 <div class="canvas">
-
-LAYER 01 — SKETCH
-
+CAPA 01 — BOCETO
 <br>
-
-LAYER 02 — COLORS
-
+CAPA 02 — COLORES
 <br>
-
-LAYER 03 — MAGIC
-
+CAPA 03 — MAGIA
 <br>
-
-<span
-id="layer04"
-style="color:var(--pink); cursor:default;"
-onclick="openLayer04()"
->
-LAYER 04 — MELS
-</span>
-
+<button type="button" id="layer04" class="layer04-trigger" onclick="openLayer04()" aria-label="Capa 4, mensaje secreto">CAPA 04 — MELS</button>
 <br><br>
-
-Some people are easier to appreciate
-when you stop trying to explain them
-and simply look.
-
+Algunas personas son más fáciles de apreciar
+cuando dejas de intentar explicarlas
+y simplemente las miras.
 </div>
 
 </div>
-
 </section>
 
-
-<!-- =========================
-     FINAL MESSAGE
-========================= -->
+<!-- ========== PISTA FINAL ========== -->
 
 <section id="final">
 
 <div class="title">
-
-<h2>
-Final Track
-</h2>
-
-<span class="num">
-04 / FOR MELS
-</span>
-
+<h2>Pista Final</h2>
+<span class="num">04 / PARA MELS</span>
 </div>
-
 
 <div class="letter">
 
-<h2>
-Antes de terminar...
-</h2>
+<h2>Antes de terminar...</h2>
 
+<p>No sé exactamente cómo explicar todo esto sin sentir que las palabras se quedan cortas.</p>
 
-<p>
-No sé exactamente cómo explicar todo esto
-sin sentir que las palabras se quedan cortas.
-</p>
+<p>Quizá por eso terminé haciendo una página entera en lugar de simplemente escribirte un mensaje. Hay cosas que siento que puedo intentar explicar una y otra vez y, aun así, nunca voy a encontrar la manera perfecta de decirlas.</p>
 
+<p>Pero quizá esta vez no quiero hablar tanto de lo que siento.</p>
 
-<p>
-Quizá por eso terminé haciendo una página entera
-en lugar de simplemente escribirte un mensaje.
-</p>
+<p>Quiero hablar un poco de ti.</p>
 
+<p>De esa persona que quizá no siempre ves cuando te miras a ti misma.</p>
 
-<p>
-Porque hay cosas que siento que puedo intentar
-explicar una y otra vez y, aun así,
-nunca voy a encontrar la manera perfecta
-de decirlas.
-</p>
+<p>Se que tienes tus miedos.<br>
+Sé que tienes inseguridades.<br>
+Sé que hay días en los que dudas de ti, de lo que puedes hacer y de si realmente eres capaz de llegar a donde quieres.</p>
 
+<p>Y quizá no debería decirte que no tengas miedo, porque tenerlo es parte de ser humano.</p>
 
-<p class="big">
-Me cuesta.
+<p>Pero sí quiero decirte algo:</p>
 
-<br>
+<p class="big">No seas tan dura contigo misma.</p>
 
-Me cuesta mucho más
-de lo que probablemente imaginas.
-</p>
+<p>A veces siento que no alcanzas a ver todo lo que tienes dentro.</p>
 
+<p>Porque incluso cuando dudas, sigues adelante.<br>
+Incluso cuando algo te sale mal, vuelves a intentarlo.<br>
+Incluso cuando estás cansada, encuentras alguna manera de continuar.</p>
 
-<p>
-Si sintiera menos,
-quizá podría hablar más de ello.
+<p>Y quizá tú no lo consideres algo extraordinario.</p>
 
-Podría explicarlo con facilidad,
-encontrar las palabras correctas
-y simplemente dejarlo ahí.
-</p>
+<p>Pero yo sí.</p>
 
+<p>Me parece admirable la forma en la que, a pesar de todo, no te rindes.</p>
 
-<p>
-Pero no me resulta tan sencillo.
-</p>
+<p>Y quiero que algún día puedas mirarte con un poco de la misma admiración con la que yo te miro.</p>
 
+<p>Porque tienes muchísimo más potencial del que imaginas.</p>
 
-<p class="big">
-Me cuesta verte solamente como una amiga.
-</p>
+<p class="big">Muchísimo más.</p>
 
+<p>Y sé que probablemente habrá días en los que no lo vas a creer. Días en los que vas a pensar que no puedes, que no eres suficiente o que estás demasiado lejos de aquello que quieres conseguir.</p>
 
-<p>
-Y no digo esto para pedirte nada,
-ni para cambiar lo que existe entre nosotros.
+<p>Cuando llegue uno de esos días, quiero que recuerdes algo:</p>
 
-Solo creo que,
-después de todo este tiempo,
-merecías saberlo de una forma
-que no dejara espacio
-para que mis palabras se perdieran.
-</p>
+<p class="big">No tienes que tenerlo todo resuelto para seguir avanzando.</p>
 
+<p>Solo tienes que confiar un poco más en ti.</p>
 
-<p>
-No sé si esto tiene un nombre.
+<p>Seguir.<br>
+Intentarlo otra vez.<br>
+Y volver a levantarte cuando sea necesario.</p>
 
-<br>
+<p>Porque todavía tienes muchísimo por vivir, aprender, crear y descubrir.</p>
 
-No sé siquiera si necesito encontrarlo.
-</p>
+<p>Y sinceramente, me gustaría que pudieras verte aunque fuera una sola vez como yo te veo.</p>
 
+<p>Quizá entonces entenderías por qué me parece tan increíble la persona que eres.</p>
 
-<p>
-Solo sé que hay algo en ti
-que se quedó conmigo
-mucho más tiempo del que esperaba.
-</p>
+<p>Quizá entenderías que hay cosas en ti que son mucho más bonitas de lo que tú misma alcanzas a reconocer.</p>
 
+<p>Y sí...</p>
 
-<p>
-Y quizá nunca llegue a entender completamente por qué.
-</p>
+<p>Supongo que también hay una parte de mí que todavía no sabe cómo explicar por qué alguien puede quedarse tanto tiempo en los pensamientos de otra persona.</p>
 
+<p class="big">Me cuesta.<br>
+Me cuesta mucho más de lo que probablemente imaginas.</p>
 
-<p>
-Pero tampoco me avergüenza.
-</p>
+<p>Si sintiera menos, quizá podría hablar más fácilmente de ello. Encontrar las palabras correctas y simplemente dejarlo ahí.</p>
 
+<p>Pero no me resulta tan sencillo.</p>
 
-<p>
-Me gusta haberte conocido.
+<p class="big">Me cuesta verte solamente como una amiga.</p>
 
-<br><br>
+<p>No te digo esto para pedirte nada, ni para cambiar lo que existe entre nosotros.</p>
 
-Me gusta que existas en mis recuerdos.
+<p>Solo creo que, después de todo este tiempo, merecías saberlo.</p>
 
-<br><br>
+<p>Y quizá también merecías saber algo más importante:</p>
 
-Me gusta que algunas canciones
-me hagan pensar en ti,
-que ciertas cosas me recuerden a ti
-y que, incluso después de tanto tiempo,
-todavía haya algo en mí
-que se alegra de encontrarte otra vez.
-</p>
+<p>Que hay alguien que cree en ti incluso en esos momentos en los que tú misma dudas de ti.</p>
 
+<p>No sé qué nombre ponerle a todo lo que siento.</p>
 
-<p>
-Supongo que eso es todo lo que quería decir.
-</p>
+<p>No sé si realmente necesito encontrarlo.</p>
 
+<p>Solo sé que me alegra haberte conocido.</p>
 
-<p>
-No esperaba que esta página explicara todo.
+<p>Me alegra que existas en mis recuerdos.</p>
 
-Probablemente ni siquiera podría hacerlo
-aunque tuviera cien páginas más.
-</p>
+<p>Me alegra que algunas canciones me hagan pensar en ti, que ciertas cosas me recuerden a ti y que, incluso después de tanto tiempo, todavía haya algo en mí que se alegra cuando vuelves a aparecer.</p>
 
+<p>Supongo que por eso esta página terminó siendo así.</p>
 
-<p>
-Solo quería darte algo
-que pudiera guardar todo aquello
-que yo nunca sé cómo decir.
-</p>
+<p>No quería regalarte solamente unas palabras bonitas.</p>
 
+<p>Quería dejarte algo que, quizá algún día, puedas volver a leer cuando tengas uno de esos días en los que no puedas ver todo lo que vales.</p>
 
-<p class="big">
-Feliz cumpleaños, Mels.
-</p>
+<p>Y si alguna vez sucede...</p>
 
+<p class="big">Recuerda esto:</p>
 
-<p>
-Espero que los 23 te traigan cosas bonitas.
+<p>No te rindas.<br>
+Aunque tengas miedo.<br>
+Aunque dudes.<br>
+Aunque las cosas no salgan como esperabas.<br>
+Aunque tengas que empezar de nuevo.</p>
 
-Que tengas muchas razones para reír,
-jugar, crear, escuchar música,
-comer dulces y disfrutar
-de todas esas pequeñas cosas
-que hacen que un día cualquiera
-se sienta especial.
-</p>
+<p class="big">Confía en ti.</p>
 
+<p>Porque tienes un potencial mucho más grande del que imaginas.</p>
 
-<p>
-Y espero que,
-cuando algún día vuelvas a encontrar esta página,
-puedas hacerlo con una sonrisa.
-</p>
+<p>Y todavía te queda muchísimo por descubrir.</p>
 
+<p>Así que sigue adelante, Mels.</p>
 
-<p>
-Porque si algo quería regalarte hoy,
-además de estas palabras,
-era precisamente eso.
-</p>
+<p>Sigue creando.<br>
+Sigue soñando.<br>
+Sigue jugando.<br>
+Sigue escuchando música a todo volumen.<br>
+Sigue encontrando cosas que te hagan feliz.</p>
 
+<p>Y, por favor, sigue siendo tú.</p>
 
-<p class="big">
-Una pequeña razón para sonreír.
-</p>
+<p>Porque aunque quizá tú todavía no puedas verlo,<br>
+yo sí veo todo lo que puedes llegar a ser.</p>
 
+<p>Y espero que algún día tú también puedas verlo.</p>
 
-<div class="sig">
-— para Mels, con cariño ♡
-</div>
+<p class="big">Feliz cumpleaños, Mels.</p>
+
+<p>Espero que tus 23 estén llenos de momentos que quieras recordar, de personas que te hagan bien, de canciones que se conviertan en recuerdos, de dulces, juegos, arte, risas y pequeños momentos que hagan que la vida se sienta bonita.</p>
+
+<p>Y sobre todo, espero que este nuevo año te encuentre creyendo un poquito más en ti.</p>
+
+<p>Porque te lo mereces.</p>
+
+<p>Y si algún día vuelves a encontrar esta página, espero que no recuerdes solamente lo que alguien sintió por ti.</p>
+
+<p>Espero que recuerdes algo mucho más importante:</p>
+
+<p>Que alguien vio en ti algo que quizá tú todavía estabas aprendiendo a ver.</p>
+
+<p>Y que, entre todas las cosas que podía regalarte,<br>
+elegí dejarte un pequeño recordatorio de que nunca debes dejar de creer en ti.</p>
+
+<p class="big">Feliz cumpleaños, Mels.</p>
+
+<div class="sig">— para ti, con cariño ♡</div>
 
 </div>
 
@@ -1508,75 +1102,32 @@ Una pequeña razón para sonreír.
 
 </main>
 
-
-<!-- =========================
-     END
-========================= -->
+<!-- ========== FIN ========== -->
 
 <footer class="end">
-
-<h2>
-END OF SIDE A
-</h2>
-
-<div class="small">
-NO NECESITA UN NOMBRE ·
-SOLO NECESITABA EXISTIR EN ALGÚN LUGAR
-</div>
-
+<h2>FIN DEL LADO A</h2>
+<div class="small">NO NECESITA UN NOMBRE · SOLO NECESITABA EXISTIR EN ALGÚN LUGAR</div>
 <br>
-
-<div class="small">
-MADE FOR MELS · 25.08.2003
-</div>
-
+<div class="small">HECHO PARA MELS · 25.08.2003</div>
 </footer>
 
+<!-- ========== MODAL DE SECRETO ========== -->
 
-<!-- =========================
-     SECRET MODAL
-========================= -->
-
-<div id="modal">
-
-    <div class="modal">
-
-        <div class="small">
-            ✦ SECRET FOUND ✦
-        </div>
-
-        <p id="msg"></p>
-
-        <button
-            class="btn"
-            onclick="closeSecret()"
-        >
-            CLOSE
-        </button>
-
-    </div>
-
+<div id="modal" role="dialog" aria-modal="true" aria-label="Secreto encontrado">
+<div class="modal">
+<div class="small">✦ SECRETO ENCONTRADO ✦</div>
+<p id="msg"></p>
+<button class="btn" onclick="closeSecret()">CERRAR</button>
+</div>
 </div>
 
+<!-- ========== PANTALLA SECRETA — CAPA 04 ========== -->
 
-<!-- =========================
-     LAYER 04 SECRET SCREEN
-========================= -->
-
-<div id="layer04Screen">
-
-    <div class="layer04-box">
-
-        <div class="small">
-            ✦ LAYER 04 — UNLOCKED ✦
-        </div>
-
-        <h2>
-            LAYER 04 — UNLOCKED ♡
-        </h2>
-
-        <p>
-Hay algo en ti que nunca supe explicar.
+<div id="layer04Screen" role="dialog" aria-modal="true" aria-label="Capa 4 desbloqueada">
+<div class="layer04-box">
+<div class="small">✦ CAPA 04 — DESBLOQUEADA ✦</div>
+<h2>CAPA 04 — DESBLOQUEADA ♡</h2>
+<p>Hay algo en ti que nunca supe explicar.
 
 No sé en qué momento dejaste de ser simplemente alguien que conocí y te convertiste en alguien que aparece en mis pensamientos sin que la invite.
 
@@ -1594,89 +1145,36 @@ Tú eres de esas.
 
 Y quizá lo más bonito es que no necesito entender completamente por qué.
 
-Me basta con saber que, entre tantas personas, me alegra muchísimo haberte encontrado a ti.
-        </p>
-
-        <button
-            class="btn"
-            onclick="closeLayer04()"
-        >
-            CLOSE
-        </button>
-
-    </div>
-
+Me basta con saber que, entre tantas personas, me alegra muchísimo haberte encontrado a ti.</p>
+<button class="btn" onclick="closeLayer04()">CERRAR</button>
+</div>
 </div>
 
-
 <script>
+/* ========== SECRETOS ========== */
 
 let secretsFound = 0;
 const totalSecrets = 5;
 
-
-/* =========================
-   MELS — SIDE A MUSIC PLAYER
-========================= */
+/* ========== REPRODUCTOR — MELS LADO A ========== */
+/* Rutas relativas a index.html: si un archivo no carga en GitHub Pages,
+   revisa en la consola el mensaje "No se pudo cargar" — muestra la URL
+   exacta que el navegador intentó abrir. Compárala carácter por carácter
+   con el nombre real del archivo en el repositorio (GitHub Pages distingue
+   mayúsculas de minúsculas) y confirma que music/ no esté versionado con
+   Git LFS, ya que Pages no sirve el contenido real de archivos LFS. */
 
 const songs = [
-
-    {
-        title: "I Wanna Be Yours",
-        artist: "Arctic Monkeys",
-        file: "./music/I-Wanna-Be-Yours.mp3"
-    },
-
-    {
-        title: "Sweater Weather",
-        artist: "The Neighbourhood",
-        file: "./music/Sweater-Weather.mp3"
-    },
-
-    {
-        title: "505",
-        artist: "Arctic Monkeys",
-        file: "./music/505.mp3"
-    },
-
-    {
-        title: "Daddy Issues",
-        artist: "The Neighbourhood",
-        file: "./music/Daddy-Issues.mp3"
-    },
-
-    {
-        title: "Butterfly",
-        artist: "BTS",
-        file: "./music/Butterfly.mp3"
-    },
-
-    {
-        title: "Do I Wanna Know?",
-        artist: "Arctic Monkeys",
-        file: "./music/Do-I-Wanna-Know.mp3"
-    },
-
-    {
-        title: "Softcore",
-        artist: "The Neighbourhood",
-        file: "./music/Softcore.mp3"
-    },
-
-    {
-        title: "Spring Day",
-        artist: "BTS",
-        file: "./music/Spring-Day.mp3"
-    },
-
-    {
-        title: "Euphoria",
-        artist: "BTS",
-        file: "./music/Euphoria.mp3"
-    }
-
+    { title:"I Wanna Be Yours", artist:"Arctic Monkeys", file:"./music/I-Wanna-Be-Yours.mp3" },
+    { title:"Sweater Weather", artist:"The Neighbourhood", file:"./music/Sweater-Weather.mp3" },
+    { title:"505", artist:"Arctic Monkeys", file:"./music/505.mp3" },
+    { title:"Daddy Issues", artist:"The Neighbourhood", file:"./music/Daddy-Issues.mp3" },
+    { title:"Butterfly", artist:"BTS", file:"./music/Butterfly.mp3" },
+    { title:"Do I Wanna Know?", artist:"Arctic Monkeys", file:"./music/Do-I-Wanna-Know.mp3" },
+    { title:"Softcore", artist:"The Neighbourhood", file:"./music/Softcore.mp3" },
+    { title:"Spring Day", artist:"BTS", file:"./music/Spring-Day.mp3" },
+    { title:"Euphoria", artist:"BTS", file:"./music/Euphoria.mp3" }
 ];
-
 
 let currentSong = 0;
 
@@ -1687,265 +1185,106 @@ const songTitle = document.getElementById("songTitle");
 const songArtist = document.getElementById("songArtist");
 const musicStatus = document.getElementById("musicStatus");
 
-
-/* =========================
-   CARREGA MÚSICA
-========================= */
-
-function loadSong(index) {
-
+function loadSong(index){
     currentSong = index;
-
     const song = songs[currentSong];
 
     musicPlayer.pause();
-
     musicPlayer.src = song.file;
-
     musicPlayer.load();
 
     songTitle.textContent = song.title;
-
-    songArtist.textContent =
-        song.artist +
-        " · " +
-        String(currentSong + 1).padStart(2, "0") +
-        " / 09";
+    songArtist.textContent = song.artist + " · " + String(currentSong + 1).padStart(2,"0") + " / 09";
 
     record.classList.remove("spin");
-
-    musicButton.textContent = "▶ PLAY";
-
-    musicStatus.textContent = "READY";
-
+    musicButton.textContent = "▶ REPRODUCIR";
+    musicStatus.textContent = "LISTO";
 }
 
+function setPlayingUI(isPlaying){
+    record.classList.toggle("spin", isPlaying);
+    musicButton.textContent = isPlaying ? "Ⅱ PAUSA" : "▶ REPRODUCIR";
+    musicStatus.textContent = isPlaying ? "REPRODUCIENDO" : "PAUSADO";
+}
 
-/* =========================
-   PLAY / PAUSE
-========================= */
+function playCurrent(){
+    musicStatus.textContent = "CARGANDO...";
 
-function toggleMusic() {
+    musicPlayer.play()
+        .then(function(){ setPlayingUI(true); })
+        .catch(function(error){
+            record.classList.remove("spin");
+            musicButton.textContent = "▶ REPRODUCIR";
+            musicStatus.textContent = "ERROR AL REPRODUCIR";
+            console.error("No se pudo reproducir:", musicPlayer.src, error);
+        });
+}
 
-    if (musicPlayer.paused) {
-
-        musicStatus.textContent = "LOADING...";
-
-        musicPlayer.play()
-            .then(function() {
-
-                record.classList.add("spin");
-
-                musicButton.textContent = "Ⅱ PAUSE";
-
-                musicStatus.textContent = "PLAYING";
-
-            })
-            .catch(function(error) {
-
-                console.error("Erro ao tocar música:", error);
-
-                record.classList.remove("spin");
-
-                musicButton.textContent = "▶ PLAY";
-
-                musicStatus.textContent =
-                    "ERRO AO CARREGAR MP3";
-
-            });
-
+function toggleMusic(){
+    if (musicPlayer.paused){
+        playCurrent();
     } else {
-
         musicPlayer.pause();
-
-        record.classList.remove("spin");
-
-        musicButton.textContent = "▶ PLAY";
-
-        musicStatus.textContent = "PAUSED";
-
+        setPlayingUI(false);
     }
-
 }
 
-
-/* =========================
-   PRÓXIMA MÚSICA
-========================= */
-
-function nextSong() {
-
-    currentSong++;
-
-    if (currentSong >= songs.length) {
-        currentSong = 0;
-    }
-
+function changeSong(direction){
+    currentSong = (currentSong + direction + songs.length) % songs.length;
     loadSong(currentSong);
-
-    musicPlayer.play()
-        .then(function() {
-
-            record.classList.add("spin");
-
-            musicButton.textContent = "Ⅱ PAUSE";
-
-            musicStatus.textContent = "PLAYING";
-
-        })
-        .catch(function(error) {
-
-            console.error("Erro ao tocar próxima música:", error);
-
-        });
-
+    playCurrent();
 }
 
+function nextSong(){ changeSong(1); }
+function previousSong(){ changeSong(-1); }
 
-/* =========================
-   MÚSICA ANTERIOR
-========================= */
+musicPlayer.addEventListener("ended", nextSong);
 
-function previousSong() {
-
-    currentSong--;
-
-    if (currentSong < 0) {
-        currentSong = songs.length - 1;
-    }
-
-    loadSong(currentSong);
-
-    musicPlayer.play()
-        .then(function() {
-
-            record.classList.add("spin");
-
-            musicButton.textContent = "Ⅱ PAUSE";
-
-            musicStatus.textContent = "PLAYING";
-
-        })
-        .catch(function(error) {
-
-            console.error("Erro ao tocar música anterior:", error);
-
-        });
-
-}
-
-
-/* =========================
-   QUANDO TERMINAR
-========================= */
-
-musicPlayer.addEventListener("ended", function() {
-
-    nextSong();
-
-});
-
-
-/* =========================
-   ERRO NO MP3
-========================= */
-
-musicPlayer.addEventListener("error", function() {
-
+musicPlayer.addEventListener("error", function(){
     record.classList.remove("spin");
-
-    musicButton.textContent = "▶ PLAY";
-
-    musicStatus.textContent =
-        "ERRO AO CARREGAR MP3";
-
-    console.error(
-        "Não foi possível carregar:",
-        songs[currentSong].file
-    );
-
+    musicButton.textContent = "▶ REPRODUCIR";
+    musicStatus.textContent = "ERROR AL CARGAR MP3";
+    console.error("No se pudo cargar el archivo de audio:", musicPlayer.src);
 });
-
-
-/* =========================
-   PRIMEIRA MÚSICA
-========================= */
 
 loadSong(0);
 
+/* ========== SECRETOS Y CAPA 04 ========== */
 
-/* =========================
-   SECRETS
-========================= */
-
-function secret(text, star) {
-
-    if (!star.classList.contains("found")) {
-
-        star.classList.add("found");
-
+function unlockSecret(text, starEl){
+    if (!starEl.classList.contains("found")){
+        starEl.classList.add("found");
         secretsFound++;
-
     }
 
     document.getElementById("msg").textContent = text;
-
     document.getElementById("modal").style.display = "grid";
 
-    if (secretsFound === totalSecrets) {
-
-        setTimeout(function() {
-
+    if (secretsFound === totalSecrets){
+        setTimeout(function(){
             document.getElementById("modal").style.display = "none";
-
             const layer = document.getElementById("layer04");
-
-            layer.style.cursor = "pointer";
-
-            layer.style.textShadow =
-                "0 0 15px #ff7fae";
-
+            layer.classList.add("unlocked");
             layer.dataset.unlocked = "true";
-
         }, 1200);
-
     }
-
 }
 
-
-/* =========================
-   LAYER 04
-========================= */
-
-function openLayer04() {
-
+function openLayer04(){
     const layer = document.getElementById("layer04");
-
-    if (
-        secretsFound === totalSecrets &&
-        layer.dataset.unlocked === "true"
-    ) {
-
+    if (secretsFound === totalSecrets && layer.dataset.unlocked === "true"){
         document.getElementById("layer04Screen").style.display = "grid";
-
     }
-
 }
 
-
-function closeLayer04() {
-
+function closeLayer04(){
     document.getElementById("layer04Screen").style.display = "none";
-
 }
 
-
-function closeSecret() {
-
+function closeSecret(){
     document.getElementById("modal").style.display = "none";
-
 }
-
 </script>
-```
+
+</body>
+</html>
