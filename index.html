@@ -24,7 +24,7 @@ I Wanna Be Yours
 Arctic Monkeys · 01 / 09
 </div>
 
-<audio id="musicPlayer" preload="metadata"></audio>
+<audio id="musicPlayer" preload="auto"></audio>
 
 <br>
 
@@ -46,46 +46,73 @@ NEXT ⏭
 
 <br>
 
+<div class="small" id="musicStatus">
+READY
+</div>
+
+<br>
+
 <div class="small">
 MELS — SIDE A
 </div>
 
 </div>
 
+
 <div>
 
 <div class="track">
+
 <div class="n">AM</div>
+
 <div>
+
 <h3>Arctic Monkeys</h3>
+
 <p>
 Guitarras, madrugada, ironía
 y esa sensación de estar pensando demasiado.
 </p>
+
 <div class="quote">
 Some nights are made for getting lost.
 </div>
-</div>
+
 </div>
 
+</div>
+
+
 <div class="track">
+
 <div class="n">TN</div>
+
 <div>
+
 <h3>The Neighbourhood</h3>
+
 <p>
 Noches, sombras, nostalgia
 y cosas que se sienten mejor con auriculares.
 </p>
+
 <div class="quote">
 Some memories look better in the dark.
 </div>
-</div>
+
 </div>
 
+</div>
+
+
 <div class="track">
+
 <div class="n">BTS</div>
+
 <div>
+
 <h3>BTS</h3>
+
 <p>
 No todo tiene que ser triste,
 complicado o demasiado profundo.
@@ -93,10 +120,13 @@ complicado o demasiado profundo.
 A veces una canción simplemente
 hace que el día sea mejor.
 </p>
+
 <div class="quote">
 You deserve days that feel like your favorite song.
 </div>
+
 </div>
+
 </div>
 
 </div>
@@ -125,55 +155,55 @@ const songs = [
     {
         title: "I Wanna Be Yours",
         artist: "Arctic Monkeys",
-        file: "I-Wanna-Be-Yours.mp3"
+        file: "./I-Wanna-Be-Yours.mp3"
     },
 
     {
         title: "Sweater Weather",
         artist: "The Neighbourhood",
-        file: "Sweater-Weather.mp3"
+        file: "./Sweater-Weather.mp3"
     },
 
     {
         title: "505",
         artist: "Arctic Monkeys",
-        file: "505.mp3"
+        file: "./505.mp3"
     },
 
     {
         title: "Daddy Issues",
         artist: "The Neighbourhood",
-        file: "Daddy-Issues.mp3"
+        file: "./Daddy-Issues.mp3"
     },
 
     {
         title: "Butterfly",
         artist: "BTS",
-        file: "Butterfly.mp3"
+        file: "./Butterfly.mp3"
     },
 
     {
         title: "Do I Wanna Know?",
         artist: "Arctic Monkeys",
-        file: "Do-I-Wanna-Know.mp3"
+        file: "./Do-I-Wanna-Know.mp3"
     },
 
     {
         title: "Softcore",
         artist: "The Neighbourhood",
-        file: "Softcore.mp3"
+        file: "./Softcore.mp3"
     },
 
     {
         title: "Spring Day",
         artist: "BTS",
-        file: "Spring-Day.mp3"
+        file: "./Spring-Day.mp3"
     },
 
     {
         title: "Euphoria",
         artist: "BTS",
-        file: "Euphoria.mp3"
+        file: "./Euphoria.mp3"
     }
 
 ];
@@ -186,7 +216,12 @@ const record = document.getElementById("record");
 const musicButton = document.getElementById("musicButton");
 const songTitle = document.getElementById("songTitle");
 const songArtist = document.getElementById("songArtist");
+const musicStatus = document.getElementById("musicStatus");
 
+
+/* =========================
+   CARREGA MÚSICA
+========================= */
 
 function loadSong(index) {
 
@@ -196,9 +231,11 @@ function loadSong(index) {
 
     musicPlayer.pause();
 
-    musicPlayer.src = song.file;
+    musicPlayer.removeAttribute("src");
 
     musicPlayer.load();
+
+    musicPlayer.src = song.file;
 
     songTitle.textContent = song.title;
 
@@ -211,31 +248,59 @@ function loadSong(index) {
     record.classList.remove("spin");
 
     musicButton.textContent = "▶ PLAY";
+
+    musicStatus.textContent = "LOADING...";
+
+    musicPlayer.load();
+
 }
 
+
+/* =========================
+   PLAY / PAUSE
+========================= */
 
 function toggleMusic() {
 
     if (musicPlayer.paused) {
 
-        musicPlayer.play()
-            .then(function() {
+        musicStatus.textContent = "LOADING...";
 
-                record.classList.add("spin");
+        const playPromise = musicPlayer.play();
 
-                musicButton.textContent = "Ⅱ PAUSE";
+        if (playPromise !== undefined) {
 
-            })
-            .catch(function(error) {
+            playPromise
+                .then(function() {
 
-                console.error("Erro ao tocar música:", error);
+                    record.classList.add("spin");
 
-                alert(
-                    "Não foi possível tocar esta música. " +
-                    "Verifique se o arquivo .mp3 está no GitHub com o nome correto."
-                );
+                    musicButton.textContent = "Ⅱ PAUSE";
 
-            });
+                    musicStatus.textContent = "PLAYING";
+
+                })
+                .catch(function(error) {
+
+                    console.error("Erro ao tocar:", error);
+
+                    record.classList.remove("spin");
+
+                    musicButton.textContent = "▶ PLAY";
+
+                    musicStatus.textContent =
+                        "ERRO: MP3 NÃO ENCONTRADO";
+
+                    alert(
+                        "A música não foi encontrada.\n\n" +
+                        "Verifique se o arquivo:\n" +
+                        songs[currentSong].file +
+                        "\n\nestá no GitHub."
+                    );
+
+                });
+
+        }
 
     } else {
 
@@ -245,72 +310,102 @@ function toggleMusic() {
 
         musicButton.textContent = "▶ PLAY";
 
+        musicStatus.textContent = "PAUSED";
+
     }
 
 }
 
+
+/* =========================
+   PRÓXIMA MÚSICA
+========================= */
 
 function nextSong() {
 
     currentSong++;
 
     if (currentSong >= songs.length) {
+
         currentSong = 0;
+
     }
 
     loadSong(currentSong);
 
-    musicPlayer.play()
-        .then(function() {
+    setTimeout(function() {
 
-            record.classList.add("spin");
+        toggleMusic();
 
-            musicButton.textContent = "Ⅱ PAUSE";
-
-        })
-        .catch(function(error) {
-
-            console.error("Erro ao tocar próxima música:", error);
-
-        });
+    }, 300);
 
 }
 
+
+/* =========================
+   MÚSICA ANTERIOR
+========================= */
 
 function previousSong() {
 
     currentSong--;
 
     if (currentSong < 0) {
+
         currentSong = songs.length - 1;
+
     }
 
     loadSong(currentSong);
 
-    musicPlayer.play()
-        .then(function() {
+    setTimeout(function() {
 
-            record.classList.add("spin");
+        toggleMusic();
 
-            musicButton.textContent = "Ⅱ PAUSE";
-
-        })
-        .catch(function(error) {
-
-            console.error("Erro ao tocar música anterior:", error);
-
-        });
+    }, 300);
 
 }
 
 
 /* =========================
-   PASSA AUTOMATICAMENTE
+   QUANDO TERMINAR
 ========================= */
 
 musicPlayer.addEventListener("ended", function() {
 
     nextSong();
+
+});
+
+
+/* =========================
+   ERRO DE ARQUIVO
+========================= */
+
+musicPlayer.addEventListener("error", function() {
+
+    record.classList.remove("spin");
+
+    musicButton.textContent = "▶ PLAY";
+
+    musicStatus.textContent =
+        "ERRO AO CARREGAR MP3";
+
+    console.error(
+        "Não foi possível carregar:",
+        songs[currentSong].file
+    );
+
+});
+
+
+/* =========================
+   MÚSICA CARREGADA
+========================= */
+
+musicPlayer.addEventListener("canplay", function() {
+
+    musicStatus.textContent = "READY";
 
 });
 
